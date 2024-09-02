@@ -77,7 +77,11 @@ describe('UserService', () => {
   describe('createUser', () => {
     it('should create a new user', async () => {
       const user = TestUtil.giveAMeAvalidUser();
-      const createUserDto = { name: user.name, email: user.email };
+      const createUserDto = {
+        name: user.name,
+        email: user.email,
+        password: user.password,
+      };
       mockRepository.save.mockReturnValue(user);
 
       const savedUser = await service.createUser(createUserDto);
@@ -89,7 +93,11 @@ describe('UserService', () => {
 
     it('should throw a ConflictException when save fails', async () => {
       const user = TestUtil.giveAMeAvalidUser();
-      const createUserDto = { name: user.name, email: user.email };
+      const createUserDto = {
+        name: user.name,
+        email: user.email,
+        password: user.password,
+      };
 
       mockRepository.save.mockRejectedValue(new Error('Save failed'));
 

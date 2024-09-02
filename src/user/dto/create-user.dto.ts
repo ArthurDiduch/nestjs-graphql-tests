@@ -5,11 +5,16 @@ import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 export class CreateUserDto {
   @Field()
   @IsString()
-  @IsNotEmpty({ message: 'Este campo não pode ser vazio' })
+  @IsNotEmpty()
   name: string;
 
   @Field()
   @IsEmail()
-  @IsNotEmpty({ message: 'Este campo não pode ser vazio' })
+  @IsNotEmpty()
   email: string;
+
+  @Field()
+  @IsString()
+  @IsNotEmpty()
+  password: string;
 }
